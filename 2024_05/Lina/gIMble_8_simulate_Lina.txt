@@ -1,0 +1,66 @@
+#!/bin/bash
+#SBATCH --job-name="Lina_DIVsimulate"
+#SBATCH --output="/home/mlu/scratch/2_gimble/Linaria/Lina_DIVsimulate.out"
+#SBATCH --error="/home/mlu/scratch/2_gimble/Linaria/Lina_DIVsimulate.err"
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=himem
+#SBATCH --mem=240G
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=m.lu-17@sms.ed.ac.uk
+
+
+##-0- Enter the conda env
+source activate /mnt/shared/scratch/mlu/apps/conda/envs/gimble_py310
+
+##-1- Move to the correct working directory
+cd /home/mlu/scratch/2_gimble/Linaria
+
+
+##-2- Run gimble
+time gimble simulate -z Lina_Gstore.z \
+    -e 79 -p 10 \
+    -k 2,2,2,2 -u 7e-09 --rec_rate 1.85 \
+    -m DIV -s DIV_294w -r 100\
+    --windows 294 --blocks 6213 --block_length 64 \
+    -a 7 -b 7 \
+    -A 372683 -B 251619 -C 1009867 -T 763249 #\
+#    -f
+
+
+############----------------------------------------------------------################
+
+#!/bin/bash
+#SBATCH --job-name="Lina_BAsimulate"
+#SBATCH --output="/home/mlu/scratch/2_gimble/Linaria/Lina_BAsimulate.out"
+#SBATCH --error="/home/mlu/scratch/2_gimble/Linaria/Lina_BAsimulate.err"
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=himem
+#SBATCH --mem=240G
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=m.lu-17@sms.ed.ac.uk
+
+
+##-0- Enter the conda env
+source activate /mnt/shared/scratch/mlu/apps/conda/envs/gimble_py310
+
+##-1- Move to the correct working directory
+cd /home/mlu/scratch/2_gimble/Linaria
+
+
+##-2- Run gimble
+time gimble simulate -z Lina_Gstore.z \
+    -e 82 -p 10 \
+    -k 2,2,2,2 -u 7e-09 --rec_rate 1.85 \
+    -m IM_BA -s IM_BA_294w -r 100\
+    --windows 294 --blocks 6213 --block_length 64 \
+    -a 7 -b 7 \
+    -A 386090 -B 253207 -C 989848 -T 770480 -M 2.66375620849626e-11 #\
+#    -f
+
+
+#-rw-rw-r-- 1 mlu mlu  808 Dec 27 11:58 Lina_BAsimulate.sh
+#-rw-rw-r-- 1 mlu mlu  784 Dec 27 11:57 Lina_DIVsimulate.sh
+
+
+
+

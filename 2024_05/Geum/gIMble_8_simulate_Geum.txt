@@ -1,0 +1,59 @@
+############----------------------------------------------------------################
+
+#!/bin/bash
+#SBATCH --job-name="Geum_Gsimulate_21w"
+#SBATCH --output="/home/mlu/scratch/2_gimble/2024_Jan/Geum/Slurm/Geum_simulate21.out"
+#SBATCH --error="/home/mlu/scratch/2_gimble/2024_Jan/Geum/Slurm/Geum_simulate21.err"
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=himem
+#SBATCH --mem=500G
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=m.lu-17@sms.ed.ac.uk
+
+
+##-0- Enter the conda env
+source activate /mnt/shared/scratch/mlu/apps/conda/envs/gimble_py310
+
+##-1- Move to the correct working directory
+cd /home/mlu/scratch/2_gimble/2024_Jan/Geum
+
+##-2- Run gimble
+time gimble simulate -z Geum_Gstore.z \
+    -e 79 -p 50 \
+    -k 2,2,2,2 -u 7e-09 --rec_rate 1.85 \
+    -m IM_BA -s IM_BA_21w -r 100\
+    --windows 21 --blocks 383722 --block_length 64 \
+    -a 17 -b 23 \
+    -A 233210 -B 2781 -C 498921 -T 783790 -M 1.45753404936425E-06 \
+
+
+############----------------------------------------------------------################
+
+#!/bin/bash
+#SBATCH --job-name="Geum_Gsimulate_5000w"
+#SBATCH --output="/home/mlu/scratch/2_gimble/2024_Jan/Geum/Slurm/Geum_simulate5000.out"
+#SBATCH --error="/home/mlu/scratch/2_gimble/2024_Jan/Geum/Slurm/Geum_simulate5000.err"
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=himem
+#SBATCH --mem=250G
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=m.lu-17@sms.ed.ac.uk
+
+##-0- Enter the conda env
+source activate /mnt/shared/scratch/mlu/apps/conda/envs/gimble_py310
+
+##-1- Move to the correct working directory
+cd /home/mlu/scratch/2_gimble/2024_Jan/Geum
+
+##-2- Run gimble
+time gimble simulate -z Geum_Gstore.z \
+    -e 42 -p 50 \
+    -k 2,2,2,2 -u 7e-09 --rec_rate 1.85 \
+    -m IM_BA -s IM_BA_5000w -r 100\
+    --windows 5157 --blocks 1562 --block_length 64 \
+    -a 17 -b 23 \
+    -A 233210 -B 2781 -C 498921 -T 783790 -M 1.45753404936425E-06 \
+
+
+
+
