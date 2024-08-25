@@ -1,0 +1,17 @@
+// Search ranges and rules file
+// ****************************
+
+[PARAMETERS]
+//#isInt? #name   #dist.#min  #max 
+//all Ns are in number of haploid individuals
+1  $pop0_Geum_rivale$          logunif  1e4   1e6   output
+1  $pop1_Geum_urbanum$         logunif  1e3   1e5   output
+1  $NANC$                      logunif  5e4   5e6   output
+1  $TDIV$                      unif     1e5   3e6   output
+0  $mig01$                     logunif  1e-12 1e-2  output 
+0  $mig10$                     logunif  1e-12 1e-2  output
+
+
+
+[COMPLEX PARAMETERS]
+0  $RESIZE$   = $NANC$/$pop0_Geum_rivale$          output

@@ -1,0 +1,18 @@
+// Search ranges and rules file
+// ****************************
+
+[PARAMETERS]
+//#isInt? #name   #dist.#min  #max 
+//all Ns are in number of haploid individuals
+1  $pop0_Prim_veris$            logunif  5e3   2e5    output
+1  $pop1_Prim_vulgaris$         logunif  5e3   2e5    output
+1  $NANC$                       logunif  1e4   1e6    output
+1  $TR$                         unif     5e4   1.5e6    output
+1  $TMIG$                       unif     5e4   1.5e6    output
+0  $mig01$                      logunif  1e-12 1e-2   output 
+0  $mig10$                      logunif  1e-12 1e-2   output 
+
+
+[COMPLEX PARAMETERS]
+0 $RESIZE$   = $NANC$/$pop0_Prim_veris$      output
+1 $TDIV$     = $TMIG$ + $TR$                 output

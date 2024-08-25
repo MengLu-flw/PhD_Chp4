@@ -1,0 +1,7 @@
+
+
+$Genus$_NoM and $Genus$_Proj share identical .est file and these prior boundaries are the same ones as they were defined in gIMble
+
+
+$Genus$_NoM and $Genus$_Proj .tpl only have one difference, which is the sample size that fsc28 will take.
+$Genus$_NoM takes all diploid samples, while $Genus$_Proj takes the projected/downsampled number.
